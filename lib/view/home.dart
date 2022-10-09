@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:const Color(0xff005C97),
-      body: SingleChildScrollView(
+      body: SingleChildScrollView( //b68dd358b98645fd8b   5c32a7cacb7b6cf6a6
         scrollDirection: Axis.vertical,
         child: Container(
           padding: const EdgeInsets.only(top: 80),
@@ -57,7 +57,7 @@ class _HomeState extends State<Home> {
                 ),
                 textAlign: TextAlign.center,
               ) : const SizedBox(),
-               Center(
+              Center(
                 child:
                 Text('${_response!.cityName}',
                       style: const TextStyle(
@@ -69,7 +69,7 @@ class _HomeState extends State<Home> {
               const SizedBox(height: 5,),
               buildButton('Turn on location services'),
               const SizedBox(height: 20,),
-               Text('${_response!.temp}',
+              Text('${_response!.temp}',
               style:const TextStyle(
                 color: Colors.white,
                 fontSize: 140,
