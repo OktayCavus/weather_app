@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
                   _search();
                 }, icon:const Icon(Icons.search,color: Colors.white,),),hintText: 'Enter City Name',labelText: 'City',
                 border: InputBorder.none,
-                labelStyle: TextStyle(color: Colors.white,fontSize: 20),
+                labelStyle:const TextStyle(color: Colors.white,fontSize: 20),
                 ),
                 textAlign: TextAlign.center,
               ) : const SizedBox(),
@@ -76,7 +76,7 @@ class _HomeState extends State<Home> {
                 fontWeight: FontWeight.bold
                 ),),
                 Text('${_response!.description}',
-                style: TextStyle(
+                style:const TextStyle(
                   color: Colors.white,
                   fontSize: 34,
                   fontWeight: FontWeight.bold
@@ -117,9 +117,6 @@ class _HomeState extends State<Home> {
     setState(() {
       _response = response;
     });
-    print(response!.cityName);
-    print(response!.description);
-    print(response!.temp);
   }
 
   Row buildForecast(IconData icon , String text , String degree) {
