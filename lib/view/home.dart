@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_doing_myself/model/weather_model.dart';
 import 'package:weather_app_doing_myself/service/service.dart';
 
 class Home extends StatefulWidget {
@@ -9,10 +10,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   bool isActive  = false;
   bool isHiding = true;
   final _dataService = DataService();
   final _textController = TextEditingController();
+  WeatherModel? _response;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,9 +57,10 @@ class _HomeState extends State<Home> {
                 ),
                 textAlign: TextAlign.center,
               ) : const SizedBox(),
-              const Center(
-                child: Text('London',
-                      style: TextStyle(
+               Center(
+                child:
+                Text('${_response!.cityName}',
+                      style: const TextStyle(
                         fontSize:37,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -64,13 +69,13 @@ class _HomeState extends State<Home> {
               const SizedBox(height: 5,),
               buildButton('Turn on location services'),
               const SizedBox(height: 20,),
-              const Text('27°',
-              style: TextStyle(
+               Text('${_response!.temp}',
+              style:const TextStyle(
                 color: Colors.white,
-                fontSize: 161,
+                fontSize: 140,
                 fontWeight: FontWeight.bold
                 ),),
-                const Text('Cloudy',
+                Text('${_response!.description}',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 34,
@@ -109,10 +114,12 @@ class _HomeState extends State<Home> {
 
   void _search() async {
     final response =await _dataService.getWeather(_textController.text);
-    print(response?.cityName);
-    print(response?.description);
-    print(response?.temp);
-
+    setState(() {
+      _response = response;
+    });
+    print(response!.cityName);
+    print(response!.description);
+    print(response!.temp);
   }
 
   Row buildForecast(IconData icon , String text , String degree) {

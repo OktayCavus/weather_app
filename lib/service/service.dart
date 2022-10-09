@@ -17,7 +17,8 @@ class DataService{
 
     final response = await http.get(url);
 
-    final json = jsonDecode(response.body);
-    return WeatherModel.fromJson(json);
+    final body = json.decode(response.body);
+
+    return WeatherModel.fromJson(body);
   }
 }
