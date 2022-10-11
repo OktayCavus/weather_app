@@ -21,4 +21,12 @@ class DataService{
 
     return WeatherModel.fromJson(body);
   }
+
+  var apiKey = 'f7d67ae067d1fe5ca946f16311ab86b7';
+  Future <WeatherModel> getData(var latitude , var longitude)async{
+    var uriCall = Uri.parse('https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey&units=metric');
+    var response =await http.get(uriCall);
+    var body = jsonDecode(response.body);
+    return WeatherModel.fromJson(body);
+  }
 }
