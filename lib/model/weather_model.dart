@@ -40,6 +40,6 @@ class WeatherModel {
       return data;
     } */
   }
-  
+
 
 
