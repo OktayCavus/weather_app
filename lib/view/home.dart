@@ -2,26 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:weather_app_doing_myself/model/weather_model.dart';
 import 'package:weather_app_doing_myself/service/service.dart';
 import 'package:weather_app_doing_myself/location/location.dart';
+import 'package:weather_app_doing_myself/view/loading_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<Home> createState() => HomeState();
 }
 
-class _HomeState extends State<Home> {
+class HomeState extends State<Home> {
   // lat lon için servise WeatherData
   var client = DataService();
 
-  var data;
+  // var data;
 
-  info () async{
-    var position = await determinePosition();
-    data = await client.getData(position.latitude , position.longitude);
-    return data;
-  }
-
+  // info () async{
+    // var position = await LocationFinder().determinePosition();
+    // data = await client.getData(position.latitude , position.longitude);
+    // return data;
+  // }
+  var data=LoadingScreenState.data;
 
   bool isActive  = false;
   bool isHiding = true;
@@ -34,7 +35,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor:const Color(0xff005C97),
       body: FutureBuilder(
-        future: info(),
+        // future: info(),
         builder: (context, snapshot) {
           return SingleChildScrollView( //b68dd358b98645fd8b   5c32a7cacb7b6cf6a6
             scrollDirection: Axis.vertical,
